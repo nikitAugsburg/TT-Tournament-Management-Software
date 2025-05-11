@@ -1,0 +1,58 @@
+---
+description: Use this rule for all code generation, navigation, and documentation tasks related to Tournament Management UI.
+globs: 
+alwaysApply: false
+---
+# Tournament Management UI Rule
+
+## Purpose
+This rule documents the Tournament Management UI module, including tournament list, details, bracket visualization, and editor, referencing the [UI Model Diagram](mdc:https:/app.eraser.io/workspace/
+j1oDjupLKMatm62PhLD2?origin=share&elements=zkJ1X3JQWqCxT_1tSY_rUg) and [project-description.mdc](mdc:project-description.mdc).
+
+## Key Components
+- Tournament List: View, create, edit, delete tournaments
+- Tournament Details: Overview, participants, settings
+- Bracket Visualization: Single/Double Elimination, Round Robin, Swiss, Groups, Groups+PlayOff
+- Bracket Editor: Manual adjustments
+
+## Structure
+Refer to the following diagram for the tournament management architecture:
+
+```mermaid
+graph TD
+    A["Tournament List"]
+    B["Tournament Details"]
+    C["Bracket Visualization"]
+    D["Bracket Editor"]
+    E["State Management"]
+    F["Player Management"]
+    G["Match Management"]
+    H["SQLite Persistence"]
+
+    A -- "Select/View" --> B
+    B -- "Show/Update" --> C
+    C -- "Edit" --> D
+    D -- "Update" --> C
+    B -- "Manage Players" --> F
+    C -- "Update Matches" --> G
+    A -- "CRUD" --> E
+    B -- "CRUD" --> E
+    C -- "CRUD" --> E
+    D -- "CRUD" --> E
+    E -- "Persist" --> H
+    H -- "Hydrate" --> E
+```
+
+## Best Practices
+- Keep tournament logic modular and format-agnostic.
+- Validate all bracket and participant changes.
+- Document all UI flows and components in English.
+ Reference [project-description.mdc](mdc:project-description.mdc) for business logic and requirements.
+
+## Usage
+Use this rule for all code generation, navigation, and documentation tasks related to Tournament Management UI.
+
+
+
+
+

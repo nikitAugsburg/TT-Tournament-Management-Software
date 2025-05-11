@@ -1,0 +1,48 @@
+---
+description: Use this rule for all code generation, navigation, and documentation tasks related to UI/UX enhancements.
+globs: 
+alwaysApply: false
+---
+# UI/UX Enhancements Rule
+
+## Purpose
+This rule documents the UI/UX enhancements, including theme provider, modal system, and accessibility improvements.
+
+## Key Components
+- Theme Provider: Light/dark mode, user preference, persistence
+- Modal System: Reusable, accessible modals for confirmations, forms, alerts
+- Accessibility Layer: ARIA roles, keyboard navigation, color contrast, screen reader support
+
+## Structure
+Refer to the following diagram for the UI/UX enhancements architecture:
+
+```mermaid
+graph TD
+    A["Theme Provider"]
+    B["Modal System"]
+    C["Accessibility Layer"]
+    D["Application Settings"]
+    E["All UI Modules"]
+    F["State Management"]
+    G["SQLite Persistence"]
+
+    D -- "Set Theme" --> A
+    A -- "Apply Theme" --> E
+    B -- "Show/Hide" --> E
+    C -- "Enhance" --> E
+    A -- "Persist" --> F
+    F -- "Persist" --> G
+    B -- "Accessible" --> C
+    E -- "Use" --> B
+    E -- "Use" --> A
+    E -- "Accessible" --> C
+```
+
+## Best Practices
+- Ensure all UI components are accessible and follow WCAG guidelines.
+- Keep theme and modal logic modular and reusable.
+- Document all enhancements and usage patterns in English.
+
+## Usage
+Use this rule for all code generation, navigation, and documentation tasks related to UI/UX enhancements.
+

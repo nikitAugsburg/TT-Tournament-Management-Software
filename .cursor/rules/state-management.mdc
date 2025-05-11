@@ -1,0 +1,57 @@
+---
+description: Use this rule as a reference for all code generation, navigation, and documentation tasks related to state management.
+globs: 
+alwaysApply: false
+---
+# State Management Rule
+
+## Purpose
+This rule documents the state management architecture for the Table Tennis Tournament Management Software, including state domains, persistence, and best practices.
+
+## Key Tasks
+- Set up React Context or Redux for centralized state management
+- Define state slices: Application, Tournament, Player, Match, Settings
+- Implement actions/reducers for CRUD and state transitions
+- Integrate state persistence with SQLite via IPC
+- Provide hooks/selectors for state access in components
+
+## Structure
+Refer to the following diagram for the state management architecture:
+
+```mermaid
+graph TD
+    A["App Root"]
+    B["State Provider"]
+    C1["Application State"]
+    C2["Tournament State"]
+    C3["Player State"]
+    C4["Match State"]
+    C5["Settings State"]
+    D["React Components"]
+    E["IPC/SQLite Persistence"]
+
+    A --> B
+    B --> C1
+    B --> C2
+    B --> C3
+    B --> C4
+    B --> C5
+    D --> B
+    C1 -- "CRUD/Actions" --> D
+    C2 -- "CRUD/Actions" --> D
+    C3 -- "CRUD/Actions" --> D
+    C4 -- "CRUD/Actions" --> D
+    C5 -- "CRUD/Actions" --> D
+    B -- "Load/Save" --> E
+    E -- "Hydrate/Persist" --> B
+```
+
+## Best Practices
+- Keep state logic modular and domain-specific.
+- Ensure all state and actions are serializable.
+- Document all state domains and flows in English.
+- Use hooks/selectors for clean state access in components.
+
+## Usage
+Use this rule as a reference for all code generation, navigation, and documentation tasks related to state management.
+

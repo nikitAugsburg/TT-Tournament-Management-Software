@@ -1,0 +1,57 @@
+---
+description: Use this rule for all code generation, navigation, and documentation tasks related to the Data Access Layer.
+globs: 
+alwaysApply: false
+---
+# Data Access Layer Rule
+
+## Purpose
+This rule documents the Data Access Layer, including SQLite integration, data models, CRUD operations, and IPC flow.
+
+## Key Components
+- SQLite database (Tauri backend, Rust)
+- Data models: Tournament, Player, Match, Settings, Template
+- CRUD operations for all entities
+- Secure IPC channels for frontend-backend communication
+- Data validation and error handling
+
+## Structure
+Refer to the following diagram for the data access architecture:
+
+```mermaid
+graph TD
+    A["React Frontend"]
+    B["IPC Channel"]
+    C["Tauri Backend (Rust)"]
+    D["Data Access Layer"]
+    E["SQLite Database"]
+    F["Tournament Entity"]
+    G["Player Entity"]
+    H["Match Entity"]
+    I["Settings Entity"]
+    J["Template Entity"]
+
+    A -- "Request" --> B
+    B -- "Call" --> C
+    C -- "Invoke" --> D
+    D -- "CRUD" --> F
+    D -- "CRUD" --> G
+    D -- "CRUD" --> H
+    D -- "CRUD" --> I
+    D -- "CRUD" --> J
+    D -- "Query/Write" --> E
+    E -- "Result" --> D
+    D -- "Response" --> C
+    C -- "Return" --> B
+    B -- "Deliver" --> A
+```
+
+## Best Practices
+- Keep data access logic modular and secure.
+- Validate and sanitize all data.
+- Document all data models and flows in English.
+- Handle errors gracefully and report to the UI.
+
+## Usage
+Use this rule for all code generation, navigation, and documentation tasks related to the Data Access Layer.
+

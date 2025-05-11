@@ -1,0 +1,52 @@
+---
+description: Use this rule as a reference for all code generation, navigation, and documentation tasks related to the application shell.
+globs: 
+alwaysApply: false
+---
+# Core Application Shell Rule
+
+## Purpose
+This rule documents the structure and responsibilities of the Core Application Shell, including window management, IPC, and navigation.
+
+## Key Tasks
+- Implement main application container and window management in Tauri (Rust)
+- Set up secure IPC channels between backend and frontend
+- Scaffold navigation bar, side panel, and main content area in React
+- Set up routing and placeholder pages for all major modules
+
+## Structure
+Refer to the following diagram for the core shell architecture:
+
+```mermaid
+graph TD
+    A["Tauri Main Process (Rust)"]
+    B["React Renderer (Frontend)"]
+    C["IPC Channel"]
+    D["Main Window"]
+    E["Navigation Bar"]
+    F["Side Panel"]
+    G["Main Content Area"]
+    H["Placeholder Pages"]
+
+    A -- "Launches" --> D
+    D -- "Renders" --> B
+    B -- "Sends/Receives" --> C
+    C -- "Handles" --> A
+    B --> E
+    B --> F
+    B --> G
+    G --> H
+    H --> H1["Tournament Management"]
+    H --> H2["Player Management"]
+    H --> H3["Match Management"]
+    H --> H4["Settings"]
+```
+
+## Best Practices
+- Use Tauri's security features for IPC.
+- Keep navigation and window logic modular and reusable.
+- Document all shell components and flows in English.
+
+## Usage
+Use this rule as a reference for all code generation, navigation, and documentation tasks related to the application shell.
+

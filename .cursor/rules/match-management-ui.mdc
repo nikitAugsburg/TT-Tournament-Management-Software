@@ -1,0 +1,49 @@
+---
+description: Use this rule for all code generation, navigation, and documentation tasks related to Match Management UI.
+globs: 
+alwaysApply: false
+---
+# Match Management UI Rule
+
+## Purpose
+This rule documents the Match Management UI module, including match list, details, and integration with tournaments and players.
+
+## Key Components
+- Match List: View, edit, filter matches in a tournament
+- Match Details: Info (players, round, table, status, scores), edit functionality
+
+## Structure
+Refer to the following diagram for the match management architecture:
+
+```mermaid
+graph TD
+    A["Match List"]
+    B["Match Details"]
+    C["State Management"]
+    D["Tournament Management"]
+    E["Player Management"]
+    F["Bracket Visualization"]
+    G["SQLite Persistence"]
+
+    A -- "Select/View" --> B
+    A -- "CRUD" --> C
+    B -- "Edit/Update" --> C
+    C -- "Persist" --> G
+    G -- "Hydrate" --> C
+    A -- "Reference" --> D
+    B -- "Players" --> E
+    B -- "Update Bracket" --> F
+    B -- "Update Player Stats" --> E
+```
+
+## Best Practices
+- Keep match logic modular and reusable.
+- Validate all match data and input.
+- Document all UI flows and components in English.
+
+## Usage
+Use this rule for all code generation, navigation, and documentation tasks related to Match Management UI.
+
+
+
+

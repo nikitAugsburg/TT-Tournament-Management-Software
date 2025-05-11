@@ -1,0 +1,51 @@
+---
+description: Use this rule for all code generation, navigation, and documentation tasks related to Player Management UI.
+globs: 
+alwaysApply: false
+---
+# Player Management UI Rule
+
+## Purpose
+This rule documents the Player Management UI module, including player list, details, and add/edit functionality, with reference to tournaments.
+
+## Key Components
+- Player List: View, add, edit, delete players (with search/filter, referenced to any tournament)
+- Player Details: Info (name, club, rating), edit functionality
+- Add/Edit Player: Form for adding or editing players, with validation
+
+## Structure
+Refer to the following diagram for the player management architecture:
+
+```mermaid
+graph TD
+    A["Player List"]
+    B["Player Details"]
+    C["Add/Edit Player"]
+    D["State Management"]
+    E["Tournament Management"]
+    F["Match Management"]
+    G["SQLite Persistence"]
+
+    A -- "Select/View" --> B
+    A -- "Add/Edit/Delete" --> C
+    B -- "Edit" --> C
+    C -- "Save" --> A
+    A -- "CRUD" --> D
+    B -- "CRUD" --> D
+    C -- "CRUD" --> D
+    D -- "Persist" --> G
+    G -- "Hydrate" --> D
+    A -- "Reference" --> E
+    A -- "Stats" --> F
+```
+
+## Best Practices
+- Keep player logic modular and reusable.
+- Validate all player data and input (unique name, required fields).
+- Document all UI flows and components in English.
+
+## Usage
+Use this rule for all code generation, navigation, and documentation tasks related to Player Management UI.
+
+
+

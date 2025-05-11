@@ -1,0 +1,47 @@
+---
+description:  Use this rule as a context reference for all UI-related code generation, navigation, and documentation tasks.  When extending or refactoring the UI, ensure new components fit the described architecture and update this rule as needed.
+globs: 
+alwaysApply: false
+---
+# UI Model Rule for Table Tennis Tournament Management Software
+
+## Purpose
+This rule provides a detailed reference for the UI architecture and component structure of the Table Tennis Tournament Management Software. It is based on the Eraser diagram ([UI Model Diagram](mdc:https:/app.eraser.io/workspace/j1oDjupLKMatm62PhLD2?origin=share&elements=zkJ1X3JQWqCxT_1tSY_rUg)) and the project description ([project-description.mdc](mdc:project-description.mdc)).
+
+## Scope
+- Guides AI and developers in understanding, navigating, and extending the UI layer.
+- Ensures consistency with the offline-first, cross-platform, and user-friendly requirements.
+- Serves as a reference for UI-related code generation, refactoring, and documentation.
+
+## UI Architecture Overview
+- The UI is structured as a set of modular, reusable components.
+- The main navigation includes Tournament Management, Player Management, Match Management, and Settings.
+- Each major view (Tournament, Player, Match, Settings) is composed of subcomponents for lists, details, editing, and statistics.
+- Bracket visualization supports multiple formats (single/double elimination, round robin, Swiss system).
+- State management is centralized for application, tournament, player, and settings data.
+- The UI communicates with the native layer (Tauri/Electron) via IPC for database and file operations.
+
+## Key UI Modules & Components
+- **Core UI**: Navigation Bar, Side Panel, Main Content Area, Status Bar, Modal System, Notification System, Theme Provider
+- **Tournament Management**: Tournament List, Create Tournament, Tournament Details, Bracket Visualization (Single/Double Elimination, Round Robin, Swiss), Bracket Editor
+- **Match Management**: Match List, Match Details, Score Entry, Match Timer
+- **Player Management**: Player List, Player Details, Edit Player, Import Players, Player Statistics
+- **Settings**: Application Settings, Tournament Templates, Export Options, Backup & Restore
+- **State Management**: Application State, Tournament State, Player State, Settings State
+
+## Best Practices (from Web References)
+- Use clear, modular component boundaries for maintainability.
+- Prefer vertical layouts for navigation and main content (see [Mermaid Cursor Rules](mdc:https:/egghead.io/brainstorm-and-planning-with-mermaid-diagrams-in-cursor~9iu69)).
+- All UI components and flows must be documented in English.
+- Use standard, GitHub-compatible Mermaid syntax for diagrams in Markdown.
+- Reference [project-description.mdc](mdc:project-description.mdc) for business logic, requirements, and non-functional constraints.
+
+## References
+- [UI Model Diagram](mdc:https:/app.eraser.io/workspace/j1oDjupLKMatm62PhLD2?origin=share&elements=zkJ1X3JQWqCxT_1tSY_rUg)
+- [project-description.mdc](mdc:project-description.mdc)
+- [Mermaid Diagram Best Practices](mdc:https:/egghead.io/brainstorm-and-planning-with-mermaid-diagrams-in-cursor~9iu69)
+
+## Usage
+- Use this rule as a context reference for all UI-related code generation, navigation, and documentation tasks.
+- When extending or refactoring the UI, ensure new components fit the described architecture and update this rule as needed.
+

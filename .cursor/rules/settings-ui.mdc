@@ -1,0 +1,51 @@
+---
+description: Use this rule for all code generation, navigation, and documentation tasks related to Settings UI.
+globs: 
+alwaysApply: false
+---
+# Settings UI Rule
+
+## Purpose
+This rule documents the Settings & Configuration UI module, including application settings, tournament templates, export, and backup/restore.
+
+## Key Components
+- Application Settings: General preferences (theme, language, notifications)
+- Tournament Templates: Save/load, create, edit, delete templates
+- Export Options: Export tournament, match, and player data (PDF, CSV, etc.)
+- Backup & Restore: Backup and restore all app data
+
+## Structure
+Refer to the following diagram for the settings and configuration architecture:
+
+```mermaid
+graph TD
+    A["Application Settings"]
+    B["Tournament Templates"]
+    C["Export Options"]
+    D["Backup & Restore"]
+    E["State Management"]
+    F["SQLite Persistence"]
+    G["Tournament Management"]
+    H["Player Management"]
+    I["Match Management"]
+
+    A -- "CRUD" --> E
+    B -- "CRUD" --> E
+    C -- "Export" --> G
+    C -- "Export" --> H
+    C -- "Export" --> I
+    D -- "Backup/Restore" --> F
+    E -- "Persist" --> F
+    F -- "Hydrate" --> E
+```
+
+## Best Practices
+- Keep settings logic modular and reusable.
+- Validate all user input and backup files.
+- Document all UI flows and components in English.
+
+## Usage
+Use this rule for all code generation, navigation, and documentation tasks related to Settings & Configuration UI.
+
+
+

@@ -1,0 +1,43 @@
+---
+description: Use this rule as a reference for onboarding, environment setup, and when extending or refactoring the project tooling.
+globs: 
+alwaysApply: false
+---
+# Project Setup & Tooling Rule
+
+## Purpose
+This rule documents the initial setup and tooling for the Table Tennis Tournament Management Software, including directory structure, configuration, and core dependencies.
+
+## Key Tasks
+- Initialize git repository and .gitignore
+- Set up Tauri (Rust backend) and React (TypeScript frontend)
+- Configure TypeScript, ESLint, Prettier
+- Integrate SQLite in the backend
+- Scaffold React app in the renderer
+- Add scripts for development, build, lint, and format
+
+## Directory Structure
+Refer to the following diagram for the base project layout:
+
+/ (project root)
+      ├── src/
+      │   ├── tauri/           # Tauri backend (Rust)
+      │   └── renderer/        # React frontend (TypeScript)
+      ├── public/              # Static assets
+      ├── .cursor/             # Cursor rules and context
+      │   └── rules/
+      ├── package.json         # Frontend dependencies/scripts
+      ├── tauri.conf.json      # Tauri config
+      ├── README.md
+      └── ... (other config files)
+
+## Best Practices
+- Keep setup scripts and configs in version control.
+- Use TypeScript for type safety.
+- Maintain code quality with linting and formatting.
+- Document all setup steps in README.md.
+
+## Usage
+Use this rule as a reference for onboarding, environment setup, and when extending or refactoring the project tooling.
+
+

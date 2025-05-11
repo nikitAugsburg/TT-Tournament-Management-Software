@@ -1,0 +1,111 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Table Tennis Tournament Management Software
+
+## Overview
+
+This project is a cross-platform, offline-first desktop application for managing table tennis tournaments. It is designed for use in environments without internet access (e.g., sports halls, schools) and targets non-technical users such as club organizers.
+
+- **Platforms:** Windows, macOS, Linux
+- **Architecture:** Monolithic, offline-first
+- **UI/Packaging:** Electron or Tauri (Tauri recommended for performance and size)
+- **Database:** SQLite (local file storage)
+- **Frontend:** React or Svelte (TypeScript recommended)
+- **Key Features:** Bracket visualization, player management, live score tracking, flexible tournament formats
+
+## Core Modules
+
+### 1. Main Application Container
+- Initializes the app and manages the lifecycle of main and renderer processes.
+
+### 2. Main Process (Native Layer)
+- **Window Manager:** Handles creation and management of application windows.
+- **File System Access:** Manages import/export, backup, and restore operations.
+- **SQLite Database Connection:** Provides persistent, local data storage.
+- **IPC Communication:** Enables secure communication between main and renderer processes.
+- **Application Menu:** Manages native menus and shortcuts.
+- **App Updates:** Handles update checks and installations (if enabled).
+
+### 3. Renderer Process (Web UI Layer)
+#### Core UI Components
+- **Navigation Bar:** Main navigation for switching between modules.
+- **Side Panel:** Contextual navigation and quick actions.
+- **Main Content Area:** Displays primary views (tournaments, players, matches).
+- **Status Bar:** Shows app status, sync, and notifications.
+- **Modal System:** For dialogs, confirmations, and alerts.
+- **Notification System:** In-app notifications for user actions and errors.
+- **Theme Provider:** Manages light/dark mode and color themes.
+
+#### Tournament Management
+- **Tournament List:** View and manage all tournaments.
+- **Create Tournament:** Wizard for setting up new tournaments.
+- **Tournament Details:** Overview, participants, and settings.
+- **Bracket Visualization:** Supports single/double elimination, round robin, Swiss system.
+- **Bracket Editor:** Manual adjustments to brackets.
+
+#### Match Management
+- **Match List:** All matches in a tournament.
+- **Match Details:** View/edit match info and scores.
+- **Score Entry:** Real-time score tracking.
+- **Match Timer:** Optional timer for matches.
+
+#### Player Management
+- **Player List:** All registered players.
+- **Player Details:** View/edit player info.
+- **Edit Player:** Add or update player data.
+- **Import Players:** Bulk import from CSV or other formats.
+- **Player Statistics:** Performance and history.
+
+#### Settings & Configuration
+- **Application Settings:** General app preferences.
+- **Tournament Templates:** Save/load tournament configurations.
+- **Export Options:** Export data (PDF, CSV, etc.).
+- **Backup & Restore:** Data backup and recovery.
+
+#### State Management
+- **Application State:** Global app state.
+- **Tournament State:** Current tournament data and status.
+- **Player State:** Player data and changes.
+- **Settings State:** User and app settings.
+
+## Technology Stack
+
+- **UI/Packaging:** Tauri (preferred) or Electron
+- **Frontend:** React or Svelte (TypeScript)
+- **Database:** SQLite (local, via ORM or direct queries)
+- **Visualization:** D3.js or React-Flow for brackets
+- **State Management:** React Context, Redux, or Svelte stores
+
+## Best Practices (from Web References)
+
+- **Separation of Concerns:** Clear distinction between main/native and renderer/UI processes.
+- **State Management:** Use centralized state for consistency and offline reliability.
+- **Modular UI:** Break UI into reusable, testable components.
+- **Offline-First:** All features must work without internet; no cloud dependencies.
+- **Security:** Use IPC securely, validate all data, and prevent SQL injection.
+- **Performance:** Optimize for low resource usage, fast startup, and responsive UI.
+- **Accessibility:** Ensure UI is usable for all users (keyboard navigation, screen readers).
+- **Testing:** Unit and integration tests for all modules.
+
+## For Cursor AI (Cursor Rules)
+
+- **Module Boundaries:** Each module (UI, tournament, player, match, data access) should be clearly defined and documented.
+- **Class/Function Documentation:** All classes and functions must have clear, English-language docstrings/comments.
+- **Commit Practices:** Split changes into logical blocks; each commit should have a descriptive, English message.
+- **Architecture Diagrams:** Maintain up-to-date Mermaid diagrams for UI, data flow, and class relationships.
+- **Data Models:** Document all data models (Player, Tournament, Match, etc.) with field types and relationships.
+- **UI Flows:** Document user flows for major features (tournament creation, score entry, etc.).
+- **Error Handling:** All error messages and exceptions must be documented and user-friendly.
+- **Non-Functional Requirements:** Document performance, security, and offline requirements.
+
+---
+
+## References
+
+- [Everything you need to know about Low-Level Design in SDLC (WalkingTree)](https://walkingtree.tech/everything-need-know-low-level-design-sdlc/)
+- [Visualising Software Architecture: Why It’s Important and How I Do It (Medium)](https://medium.com/@alastairallen/visualising-software-architecture-why-its-important-and-how-i-do-it-5c2f4b65b31a)
+
+---

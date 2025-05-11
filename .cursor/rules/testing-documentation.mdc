@@ -1,0 +1,53 @@
+---
+description: Use this rule for all code generation, navigation, and documentation tasks related to testing and documentation.
+globs: 
+alwaysApply: false
+---
+# Testing & Documentation Rule
+
+## Purpose
+This rule documents the testing and documentation strategy, including unit, integration, E2E tests, CI, and project documentation.
+
+## Key Components
+- Unit Tests: Core logic, state, data access, business logic
+- Integration Tests: Module interactions and flows
+- E2E Tests: Critical user flows (UI automation)
+- Documentation: Setup, architecture, API, guides, Cursor Rules, diagrams
+- CI Pipeline: Automated test and lint runs, coverage enforcement
+
+## Structure
+Refer to the following diagram for the testing and documentation architecture:
+
+```mermaid
+graph TD
+    A["Unit Tests"]
+    B["Integration Tests"]
+    C["E2E Tests"]
+    D["Documentation"]
+    E["CI Pipeline"]
+    F["All Modules"]
+    G["Cursor Rules"]
+    H["Diagrams"]
+
+    F -- "Tested by" --> A
+    F -- "Tested by" --> B
+    F -- "Tested by" --> C
+    F -- "Documented by" --> D
+    D -- "Includes" --> G
+    D -- "Includes" --> H
+    E -- "Runs" --> A
+    E -- "Runs" --> B
+    E -- "Runs" --> C
+    E -- "Checks" --> D
+    G -- "Reference" --> F
+    H -- "Reference" --> F
+```
+
+## Best Practices
+- Maintain high test coverage and keep tests up to date.
+- Keep documentation clear, concise, and in sync with the codebase.
+- Use diagrams and Cursor Rules to aid navigation and onboarding.
+
+## Usage
+Use this rule for all code generation, navigation, and documentation tasks related to testing and documentation.
+
