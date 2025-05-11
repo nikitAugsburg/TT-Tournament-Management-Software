@@ -1,0 +1,41 @@
+# Node
+node_modules/
+dist/
+build/
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Rust
+/target/
+Cargo.lock
+
+# Tauri
+/src-tauri/target/
+/src-tauri/.cargo/
+/src-tauri/Cargo.lock
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor
+.idea/
+.vscode/
+*.swp
+
+# Misc
+coverage/
+*.log
+
+# SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# Tauri build output
+/src-tauri/bundle/ 
