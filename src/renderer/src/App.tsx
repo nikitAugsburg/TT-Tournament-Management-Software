@@ -1,25 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 
+// Core shell components
+import NavigationBar from './components/NavigationBar';
+import SidePanel from './components/SidePanel';
+import MainContentArea from './components/MainContentArea';
+import StatusBar from './components/StatusBar';
+import ModalSystem from './components/ModalSystem';
+import NotificationSystem from './components/NotificationSystem';
+
+// Placeholder pages
+import Tournaments from './pages/Tournaments';
+import Players from './pages/Players';
+import Matches from './pages/Matches';
+import Settings from './pages/Settings';
+
+/**
+ * Main App component composing the core shell and routing.
+ */
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="AppShell">
+        <NavigationBar />
+        <SidePanel />
+        <MainContentArea>
+          <Routes>
+            <Route path="/tournaments" element={<Tournaments />} />
+            <Route path="/players" element={<Players />} />
+            <Route path="/matches" element={<Matches />} />
+            <Route path="/settings" element={<Settings />} />
+            {/* Redirect root to tournaments */}
+            <Route path="/" element={<Navigate to="/tournaments" replace />} />
+          </Routes>
+        </MainContentArea>
+        <StatusBar />
+        <ModalSystem />
+        <NotificationSystem />
+      </div>
+    </Router>
   );
 }
 
