@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'tournament_list_screen.dart';
-import 'player_list_screen.dart';
-import 'settings_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -9,66 +6,55 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Tournament Tracker'),
-        elevation: 0,
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Welcome to Tournament Tracker',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+      backgroundColor: Colors.black,
+      body: Column(
+        children: [
+          // Top Bar
+          Container(
+            height: 48,
+            color: Colors.grey[900],
+            child: Row(
+              children: [
+                // File menu
+                PopupMenuButton<String>(
+                  color: Colors.grey[850],
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Text('File', style: TextStyle(color: Colors.white)),
+                  ),
+                  itemBuilder: (context) => [
+                    const PopupMenuItem(value: 'open', child: Text('Open')),
+                    const PopupMenuItem(value: 'save', child: Text('Save')),
+                    const PopupMenuItem(value: 'exit', child: Text('Exit')),
+                    const PopupMenuItem(value: 'new', child: Text('New')),
+                  ],
+                  onSelected: (value) {
+                    // TODO: Handle menu actions
+                  },
                 ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 40),
-              HomeMenuButton(
-                icon: Icons.emoji_events,
-                label: 'Tournaments',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const TournamentListScreen(),
+                // App or tournament name
+                const Expanded(
+                  child: Center(
+                    child: Text(
+                      'TT-tournament manager',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 12,
+                      ),
                     ),
-                  );
-                },
-              ),
-              const SizedBox(height: 16),
-              HomeMenuButton(
-                icon: Icons.people,
-                label: 'Players',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const PlayerListScreen(),
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(height: 16),
-              HomeMenuButton(
-                icon: Icons.settings,
-                label: 'Settings',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SettingsScreen(),
-                    ),
-                  );
-                },
-              ),
-            ],
+                  ),
+                ),
+              ]
+            ),
           ),
-        ),
+          // Main content will be implemented in next steps
+          Expanded(
+            child: Container(
+              color: Colors.black,
+            ),
+          ),
+        ],
       ),
     );
   }
