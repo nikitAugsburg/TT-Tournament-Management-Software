@@ -1,5 +1,49 @@
 import 'package:flutter/material.dart';
 
+class TopBar extends StatelessWidget {
+  const TopBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 48,
+      color: Colors.grey[900],
+      child: Row(
+        children: [
+          PopupMenuButton<String>(
+            color: Colors.grey[850],
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Text('File', style: TextStyle(color: Colors.white)),
+            ),
+            itemBuilder: (context) => const [
+              PopupMenuItem(value: 'open', child: Text('Open')),
+              PopupMenuItem(value: 'save', child: Text('Save')),
+              PopupMenuItem(value: 'exit', child: Text('Exit')),
+              PopupMenuItem(value: 'new', child: Text('New')),
+            ],
+            onSelected: (value) {
+              // TODO: Handle menu actions
+            },
+          ),
+          const Expanded(
+            child: Center(
+              child: Text(
+                'TT-tournament manager',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -9,45 +53,8 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       body: Column(
         children: [
-          // Top Bar
-          Container(
-            height: 48,
-            color: Colors.grey[900],
-            child: Row(
-              children: [
-                // File menu
-                PopupMenuButton<String>(
-                  color: Colors.grey[850],
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    child: Text('File', style: TextStyle(color: Colors.white)),
-                  ),
-                  itemBuilder: (context) => [
-                    const PopupMenuItem(value: 'open', child: Text('Open')),
-                    const PopupMenuItem(value: 'save', child: Text('Save')),
-                    const PopupMenuItem(value: 'exit', child: Text('Exit')),
-                    const PopupMenuItem(value: 'new', child: Text('New')),
-                  ],
-                  onSelected: (value) {
-                    // TODO: Handle menu actions
-                  },
-                ),
-                // App or tournament name
-                const Expanded(
-                  child: Center(
-                    child: Text(
-                      'TT-tournament manager',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ),
-                ),
-              ]
-            ),
-          ),
+          // Use the TopBar component
+          const TopBar(),
           // Main content will be implemented in next steps
           Expanded(
             child: Container(
