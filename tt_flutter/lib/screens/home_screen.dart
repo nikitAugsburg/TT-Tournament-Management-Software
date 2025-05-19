@@ -44,6 +44,59 @@ class TopBar extends StatelessWidget {
   }
 }
 
+class SideBar extends StatelessWidget {
+  const SideBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 220,
+      color: Colors.grey[850],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const SizedBox(height: 16),
+          _SideBarButton(label: 'Settings', onPressed: () {}),
+          _SideBarButton(label: 'Players', onPressed: () {}),
+          _SideBarButton(label: 'Matches', onPressed: () {}),
+          _SideBarButton(label: 'Tournament details', onPressed: () {}),
+          const Divider(
+              color: Colors.grey,
+              height: 32,
+              thickness: 1,
+              indent: 16,
+              endIndent: 16),
+          _SideBarButton(label: 'Create new Tournament', onPressed: () {}),
+          _SideBarButton(label: "Tournament's list", onPressed: () {}),
+          const Spacer(),
+        ],
+      ),
+    );
+  }
+}
+
+class _SideBarButton extends StatelessWidget {
+  final String label;
+  final VoidCallback onPressed;
+  const _SideBarButton({required this.label, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          alignment: Alignment.centerLeft,
+          foregroundColor: Colors.white,
+          textStyle: const TextStyle(fontSize: 16),
+        ),
+        onPressed: onPressed,
+        child: Text(label),
+      ),
+    );
+  }
+}
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -55,10 +108,29 @@ class HomeScreen extends StatelessWidget {
         children: [
           // Use the TopBar component
           const TopBar(),
-          // Main content will be implemented in next steps
+          // Main content area with SideBar and MainArea
           Expanded(
-            child: Container(
-              color: Colors.black,
+            child: Row(
+              children: [
+                // SideBar component
+                const SideBar(),
+                // MainArea placeholder
+                Expanded(
+                  child: Container(
+                    color: Colors.black,
+                    child: const Center(
+                      child: Text(
+                        'Main Area',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
