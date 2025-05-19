@@ -1,108 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/database_service.dart';
-
-class TopBar extends StatelessWidget {
-  const TopBar({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    return Container(
-      height: 48,
-      color: colorScheme.surface,
-      child: Row(
-        children: [
-          PopupMenuButton<String>(
-            color: colorScheme.surfaceVariant,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child:
-                  Text('File', style: TextStyle(color: colorScheme.onSurface)),
-            ),
-            itemBuilder: (context) => const [
-              PopupMenuItem(value: 'open', child: Text('Open')),
-              PopupMenuItem(value: 'save', child: Text('Save')),
-              PopupMenuItem(value: 'exit', child: Text('Exit')),
-              PopupMenuItem(value: 'new', child: Text('New')),
-            ],
-            onSelected: (value) {
-              // TODO: Handle menu actions
-            },
-          ),
-          Expanded(
-            child: Center(
-              child: Text(
-                'TT-tournament manager',
-                style: TextStyle(
-                  color: colorScheme.onSurface.withOpacity(0.7),
-                  fontWeight: FontWeight.normal,
-                  fontSize: 12,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class SideBar extends StatelessWidget {
-  const SideBar({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    return Container(
-      width: 220,
-      color: colorScheme.surfaceVariant,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const SizedBox(height: 16),
-          _SideBarButton(label: 'Settings', onPressed: () {}),
-          _SideBarButton(label: 'Players', onPressed: () {}),
-          _SideBarButton(label: 'Matches', onPressed: () {}),
-          _SideBarButton(label: 'Tournament details', onPressed: () {}),
-          Divider(
-            color: Theme.of(context).dividerColor,
-            height: 32,
-            thickness: 1,
-            indent: 16,
-            endIndent: 16,
-          ),
-          _SideBarButton(label: 'Create new Tournament', onPressed: () {}),
-          _SideBarButton(label: "Tournament's list", onPressed: () {}),
-          const Spacer(),
-        ],
-      ),
-    );
-  }
-}
-
-class _SideBarButton extends StatelessWidget {
-  final String label;
-  final VoidCallback onPressed;
-  const _SideBarButton({required this.label, required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-      child: TextButton(
-        style: TextButton.styleFrom(
-          alignment: Alignment.centerLeft,
-          foregroundColor: colorScheme.onSurface,
-          textStyle: const TextStyle(fontSize: 16),
-        ),
-        onPressed: onPressed,
-        child: Text(label),
-      ),
-    );
-  }
-}
+import '../widgets/top_bar.dart';
+import '../widgets/side_bar.dart';
+import '../widgets/reusable_icon_button.dart';
 
 class MainArea extends StatelessWidget {
   const MainArea({Key? key}) : super(key: key);
@@ -132,38 +33,21 @@ class MainArea extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
-                  child: ElevatedButton.icon(
-                    icon: Icon(Icons.add_box_rounded,
-                        color: colorScheme.onPrimary),
-                    label: const Text('Create new Tournament'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: colorScheme.primary,
-                      foregroundColor: colorScheme.onPrimary,
-                      padding: const EdgeInsets.symmetric(vertical: 18),
-                      textStyle: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
+                  child: ReusableIconButton(
+                    icon: Icons.add_box_rounded,
+                    label: 'Create new Tournament',
+                    backgroundColor: colorScheme.primary,
+                    foregroundColor: colorScheme.onPrimary,
                     onPressed: () {},
                   ),
                 ),
                 const SizedBox(width: 24),
                 Expanded(
-                  child: ElevatedButton.icon(
-                    icon: Icon(Icons.settings, color: colorScheme.onPrimary),
-                    label: const Text('Go to settings widget'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: colorScheme.primary,
-                      foregroundColor: colorScheme.onPrimary,
-                      padding: const EdgeInsets.symmetric(vertical: 18),
-                      textStyle: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
+                  child: ReusableIconButton(
+                    icon: Icons.settings,
+                    label: 'Go to settings widget',
+                    backgroundColor: colorScheme.surfaceContainerHighest,
+                    foregroundColor: colorScheme.onPrimary,
                     onPressed: () {},
                   ),
                 ),
@@ -240,7 +124,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: const Column(
         children: [
           // Use the TopBar component
